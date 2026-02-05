@@ -77,6 +77,7 @@
         // token
         mapboxgl.accessToken = 'pk.eyJ1IjoibWxva3M3NyIsImEiOiJjbWw5aW5wamEwNDR5M2ZyNHZqMzZraGZ5In0.J1nH4XDo9xjP2KvduZ07_g';
 
+        // génère la map
         const map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/satellite-streets-v12', // Style réaliste
@@ -85,17 +86,42 @@
             zoom: 1.5
         });
 
-        // Effet d'atmosphère étoilée
+        // Effet d'atmosphère
         map.on('style.load', () => {
             map.setFog({
-                color: 'rgb(186, 210, 235)', // Couleur de l'horizon
-                'high-color': 'rgb(36, 92, 223)', // Couleur du ciel
-                'space-color': 'rgb(11, 11, 25)' // Espace
+                'color': 'rgb(30, 45, 60)',          // Horizon 
+                'high-color': 'rgb(10, 20, 30)',     // Ciel
+                'space-color': 'rgb(2, 4, 8)',       // Espace 
+                'star-intensity': 0.6                // étoiles
             });
+
+            // relief
+            map.addSource('mapbox-dem', {
+                'type': 'raster-dem',
+                'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+                'tileSize': 512,
+                'maxzoom': 14
+            });
+
+            map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
         });
 
-        // 1. Définition de la source des données (GeoJSON des pays du monde)
+        // désactive la rotation de la carte avec clic droit
+        map.dragRotate.disable();
+        map.touchZoomRotate.disableRotation();
+
+        map.getCanvas().style.cursor = 'crosshair'; // Curseur en forme de cible
+
+        // (GeoJSON des pays du monde)
         const chinaGetJSON = "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson";
+
+        const pointsInteret = [
+            {
+                nom: "Le Palais d'Été",
+                coords: [116.27, 39.99], // Longitude, Latitude
+                id: "palais-ete"
+            }
+        ];
 
         // Fonction de zoom sur la Chine
         document.getElementById('btn-china').addEventListener('click', () => {
@@ -117,7 +143,30 @@
             }, 100);
         });
 
-        // ajouté pour assombrir le reste du monde
+        // Ajouter les marqueurs sur la carte
+        pointsInteret.forEach(poi => {
+            const el = document.createElement('div');
+            el.className = 'marker cursor-pointer';
+            el.style.backgroundImage = 'url(../assets/icons/POI.png)'; // Ton icône
+            el.style.width = '32px';
+            el.style.height = '32px';
+            el.style.backgroundSize = '100%';
+            el.style.cursor = 'pointer';
+
+            const marker = new mapboxgl.Marker(el)
+                .setLngLat(poi.coords)
+                .addTo(map);
+
+            // ÉVÉNEMENT : Clic sur le point pour l'étape 3 (L'objet 3D)
+            el.addEventListener('click', () => {
+                ouvrirVue3D(poi.id);
+            });
+        });
+
+        function ouvrirVue3D(id) {
+            // Ici on insérera le code Three.js / webgl plus tard
+        }
+
         map.on('load', () => {
             // Ajouter les données des pays
             map.addSource('pays', {
@@ -133,7 +182,7 @@
                 'layout': {},
                 'paint': {
                     'fill-color': '#000',
-                    'fill-opacity': 0 // Invisible au départ
+                    'fill-opacity': 0
                 },
                 'filter': ['!=', ['get', 'ISO3166-1-Alpha-3'], 'CHN']
             });
