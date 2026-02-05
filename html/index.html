@@ -82,7 +82,7 @@
             container: 'map',
             style: 'mapbox://styles/mapbox/satellite-streets-v12', // Style réaliste
             projection: 'globe', // Affiche la terre en 3D
-            center: [0, 0], // Position de départ (océan)
+            center: [104.195, 35.861], // Position de départ (océan)
             zoom: 1.5
         });
 
@@ -103,6 +103,8 @@
                 'maxzoom': 14
             });
 
+            map.setPaintProperty('country-label', 'text-color', '#FFFFFF');
+            map.setLayoutProperty('country-label', 'text-field', ['get', 'name_fr']);
             map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
         });
 
@@ -118,7 +120,7 @@
         const pointsInteret = [
             {
                 nom: "Le Palais d'Été",
-                coords: [116.27, 39.99], // Longitude, Latitude
+                coords: [116.2754606, 39.9999823], // Longitude, Latitude
                 id: "palais-ete"
             }
         ];
@@ -137,19 +139,23 @@
         // Gestion de l'opacité selon le zoom
         map.on('zoom', () => {
             const currentZoom = map.getZoom();
-            
-            // On veut 0 d'opacité à zoom 2 (ou moins)
-            // On veut 0.6 d'opacité à zoom 4 (ou plus)
-            let opacity = (currentZoom - 1) * (0.6 / (4 - 1));
+            const minZoomLimit = 2.5;
+            const maxZoomLimit = 4.5;
+            const maxOpacity = 0.7;
 
-            // On s'assure que l'opacité reste entre 0 et 0.6
+            let opacity = (currentZoom - minZoomLimit) / (maxZoomLimit - minZoomLimit);
+
+            opacity = opacity * maxOpacity;
+
             if (opacity < 0) opacity = 0;
-            if (opacity > 0.6) opacity = 0.6;
+            if (opacity > maxOpacity) opacity = maxOpacity;
 
             if (map.getLayer('masque-chine')) {
                 map.setPaintProperty('masque-chine', 'fill-opacity', opacity);
             }
         });
+
+        const palais = [116.2678, 39.9980];
 
         // Ajouter les marqueurs sur la carte
         pointsInteret.forEach(poi => {
@@ -162,16 +168,16 @@
             el.style.cursor = 'pointer';
 
             const marker = new mapboxgl.Marker(el)
-                .setLngLat(poi.coords)
+                .setLngLat(palais)
                 .addTo(map);
 
             // ÉVÉNEMENT : Clic sur le point pour l'étape 3 (L'objet 3D)
             el.addEventListener('click', () => {
-                ouvrirVue3D(poi.id);
+                Vue3D(poi.id);
             });
         });
 
-        function ouvrirVue3D(id) {
+        function Vue3D(id) {
             // Ici on insérera le code Three.js / webgl plus tard
         }
 
