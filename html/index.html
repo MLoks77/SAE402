@@ -132,15 +132,23 @@
                 duration: 5000, // Temps du trajet en millisecondes
                 curve: 1.5 // Fluidité de la courbe de vol
             });
+        });
 
-            let opacity = 0;
-            const fadeIn = setInterval(() => {
-                opacity += 0.05;
-                if (map.getLayer('masque-chine')) {
-                    map.setPaintProperty('masque-chine', 'fill-opacity', opacity);
-                }
-                if (opacity >= 0.6) clearInterval(fadeIn);
-            }, 100);
+        // Gestion de l'opacité selon le zoom
+        map.on('zoom', () => {
+            const currentZoom = map.getZoom();
+            
+            // On veut 0 d'opacité à zoom 2 (ou moins)
+            // On veut 0.6 d'opacité à zoom 4 (ou plus)
+            let opacity = (currentZoom - 1) * (0.6 / (4 - 1));
+
+            // On s'assure que l'opacité reste entre 0 et 0.6
+            if (opacity < 0) opacity = 0;
+            if (opacity > 0.6) opacity = 0.6;
+
+            if (map.getLayer('masque-chine')) {
+                map.setPaintProperty('masque-chine', 'fill-opacity', opacity);
+            }
         });
 
         // Ajouter les marqueurs sur la carte
