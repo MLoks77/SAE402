@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="../css/style.css">
 
+    <link rel="shortcut icon" href="/favicon.ico" />
+
 </head>
 
 <body>
@@ -40,6 +42,9 @@
             });
         });
 
+        // 1. Définition de la source des données (GeoJSON des pays du monde)
+        const chinaGetJSON = "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson";
+
         // Fonction de zoom sur la Chine
         document.getElementById('btn-china').addEventListener('click', () => {
             map.flyTo({
@@ -49,7 +54,39 @@
                 duration: 5000, // Temps du trajet en millisecondes
                 curve: 1.5 // Fluidité de la courbe de vol
             });
+
+            let opacity = 0;
+            const fadeIn = setInterval(() => {
+                opacity += 0.05;
+                if (map.getLayer('masque-chine')) {
+                    map.setPaintProperty('masque-chine', 'fill-opacity', opacity);
+                }
+                if (opacity >= 0.6) clearInterval(fadeIn);
+            }, 100);
         });
+
+        // ajouté pour assombrir le reste du monde
+        map.on('load', () => {
+            // Ajouter les données des pays
+            map.addSource('pays', {
+                type: 'geojson',
+                data: chinaGetJSON
+            });
+
+            // Ajouter le masque pour assombrir tout SAUF la Chine
+            map.addLayer({
+                'id': 'masque-chine',
+                'type': 'fill',
+                'source': 'pays',
+                'layout': {},
+                'paint': {
+                    'fill-color': '#000',
+                    'fill-opacity': 0 // Invisible au départ
+                },
+                'filter': ['!=', ['get', 'ISO3166-1-Alpha-3'], 'CHN']
+            });
+        });
+
     </script>
 </body>
 
