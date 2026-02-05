@@ -10,14 +10,17 @@ body {
     width: 100%;
 }
 
-#btn-china {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 10px;
-    background: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    z-index: 1;
+@font-face {
+    font-family: 'hoshiko';
+    src: url('../assets/fonts/hoshiko_satsuki/Hoshiko\ Satsuki.ttf');
+}
+
+.hoshiko2 {
+    font-family: hoshiko;
+    font-size: 2rem;
+}
+
+.hoshiko1 {
+    font-family: hoshiko;
+    font-size: 1rem;
 }
