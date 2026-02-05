@@ -128,11 +128,11 @@
         // Fonction de zoom sur la Chine
         document.getElementById('btn-china').addEventListener('click', () => {
             map.flyTo({
-                center: [104.195, 35.861], // Coordonnées centre de la Chine
+                center: [104.195, 35.861],
                 zoom: 4,
                 essential: true,
-                duration: 5000, // Temps du trajet en millisecondes
-                curve: 1.5 // Fluidité de la courbe de vol
+                duration: 5000, // Temps du trajet 
+                curve: 2 // Fluidité 
             });
         });
 
@@ -160,10 +160,11 @@
         // Ajouter les marqueurs sur la carte
         pointsInteret.forEach(poi => {
             const el = document.createElement('div');
+            el.id = 'pointsInteret';
             el.className = 'marker cursor-pointer';
-            el.style.backgroundImage = 'url(../assets/icons/POI.png)'; // Ton icône
-            el.style.width = '32px';
-            el.style.height = '32px';
+            el.style.backgroundImage = 'url(../assets/icons/POI.png)';
+            el.style.width = '42px';
+            el.style.height = '42px';
             el.style.backgroundSize = '100%';
             el.style.cursor = 'pointer';
 
