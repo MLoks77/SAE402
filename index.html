@@ -120,7 +120,7 @@
         const pointsInteret = [
             {
                 nom: "Le Palais d'Été",
-                coords: [116.2754606, 39.9999823], // Longitude, Latitude
+                coords: [116.27500534032944, 39.99988169110557], // Longitude, Latitude
                 id: "palais-ete"
             }
         ];
@@ -155,25 +155,24 @@
             }
         });
 
-        const palais = [116.2678, 39.9980];
-
         // Ajouter les marqueurs sur la carte
         pointsInteret.forEach(poi => {
             const el = document.createElement('div');
-            el.id = 'pointsInteret';
             el.className = 'marker cursor-pointer';
-            el.style.backgroundImage = 'url(../assets/icons/POI.png)';
+            el.style.backgroundImage = 'url(assets/icons/POI.png)';
             el.style.width = '42px';
             el.style.height = '42px';
             el.style.backgroundSize = '100%';
             el.style.cursor = 'pointer';
 
-            const marker = new mapboxgl.Marker(el)
-                .setLngLat(palais)
+            // Création du marqueur avec les coordonnées du point d'intérêt
+            new mapboxgl.Marker(el)
+                .setLngLat(poi.coords)
                 .addTo(map);
 
             // ÉVÉNEMENT : Clic sur le point pour l'étape 3 (L'objet 3D)
             el.addEventListener('click', () => {
+                console.log("Clic sur le marqueur :", poi.nom);
                 Vue3D(poi.id);
             });
         });
