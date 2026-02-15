@@ -42,6 +42,31 @@
         <div id="map"></div>
     </section>
 
+    <div id="modal-palais-ete" class="fixed inset-0 z-50 flex bg-black/50 hidden">
+        <div id="contenu-modal" class="absolute bg-white rounded-xl shadow-2xl max-w-md w-64 h-64 overflow-hidden border border-white">
+            <img src="images/palaisete.webp" alt="Image du palais d'été" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 z-10 bg-black/40"></div>
+            <div class="absolute bottom-0 z-20">
+                <h1 class="text-white text-2xl font-bold pl-4 pb-5 underline">Le palais d'été</h1>
+            </div>
+            <div class="absolute bottom-4 right-4 z-30">
+                <button id="ensavoirplus" class="bg-white hover:bg-gray-300 transition-colors z-10 rounded-full p-2 shadow-lg cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <button id="fermer-modal" class="absolute top-3 right-3 text-white/80 hover:text-white transition-colors z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+
     <!-- footer -->
     <footer class="absolute bottom-0 left-0 right-0 z-10 flex pointer-events-none">
         <div
@@ -159,10 +184,15 @@
         pointsInteret.forEach(poi => {
             const el = document.createElement('div');
             el.className = 'marker cursor-pointer';
-            el.style.backgroundImage = 'url(assets/icons/POI.png)';
+            // Injection du SVG directement
+            el.innerHTML = `
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+                    <path d="M12 21.7C12 21.7 20 14 20 9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9C4 14 12 21.7 12 21.7Z" fill="#E11D48" stroke="white" stroke-width="1.5"/>
+                    <circle cx="12" cy="9" r="3" fill="white"/>
+                </svg>
+            `;
             el.style.width = '42px';
             el.style.height = '42px';
-            el.style.backgroundSize = '100%';
             el.style.cursor = 'pointer';
 
             // Création du marqueur avec les coordonnées du point d'intérêt
@@ -170,8 +200,37 @@
                 .setLngLat(poi.coords)
                 .addTo(map);
 
-            // ÉVÉNEMENT : Clic sur le point pour l'étape 3 (L'objet 3D)
             el.addEventListener('click', () => {
+                const modal = document.getElementById('modal-palais-ete');
+                const contenuModal = document.getElementById('contenu-modal');
+                const point = map.project(poi.coords);
+                
+                modal.classList.remove('hidden');
+
+                const margin = 20; 
+                const gap = 20;   
+                
+                let left = point.x + gap;
+                let top = point.y - (contenuModal.offsetHeight / 2);
+
+                if (left + contenuModal.offsetWidth > window.innerWidth - margin) {
+                    left = point.x - contenuModal.offsetWidth - gap;
+                }
+
+                if (left < margin) {
+                    left = margin;
+                }
+
+                if (top < margin) {
+                    top = margin;
+                }
+
+                if (top + contenuModal.offsetHeight > window.innerHeight - margin) {
+                    top = window.innerHeight - contenuModal.offsetHeight - margin;
+                }
+                contenuModal.style.left = left + 'px';
+                contenuModal.style.top = top + 'px';
+                
                 console.log("Clic sur le marqueur :", poi.nom);
                 Vue3D(poi.id);
             });
@@ -200,6 +259,27 @@
                 },
                 'filter': ['!=', ['get', 'ISO3166-1-Alpha-3'], 'CHN']
             });
+        });
+
+        // Fermer le modal
+        function fermerModal() {
+            document.getElementById('modal-palais-ete').classList.add('hidden');
+        }
+
+        // Clic sur le bouton X
+        document.getElementById('fermer-modal').addEventListener('click', fermerModal);
+
+        // Clic EN DEHORS du modal
+        document.getElementById('modal-palais-ete').addEventListener('click', (e) => {
+            // Si l'élément cliqué est le fond (l'overlay) et non le contenu blanc
+            if (e.target.id === 'modal-palais-ete') {
+                fermerModal();
+            }
+        });
+
+        // Redirection vers la page de détails
+        document.getElementById('ensavoirplus').addEventListener('click', () => {
+            window.location.href = 'Modele3D/palaisete.html';
         });
 
     </script>
