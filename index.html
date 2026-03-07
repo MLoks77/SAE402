@@ -18,54 +18,54 @@
 
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
 </head>
 
 <body>
 
-    <!-- navbar-->
     <nav class="flex justify-between items-center absolute top-0 left-0 right-0 z-10 p-4 w-full ">
         <div class="backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg border-white border-2">
             <h1 class="text-2xl font-bold text-white hoshiko2">SAE 402 - Le palais d'été</h1>
         </div>
+        <div class="flex gap-3">
+            <button id="btn-tour"
+                class="hoshiko2 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 hover:text-white transition-colors font-medium flex items-center gap-2 cursor-pointer text-white border-white border-2">
+                La Tour
+            </button>
+            <button id="btn-bateau"
+                class="hoshiko2 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 hover:text-white transition-colors font-medium flex items-center gap-2 cursor-pointer text-white border-white border-2">
+                Le Bateau
+            </button>
 
-
-        <button id="btn-china"
-            class="hoshiko2 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 hover:text-white transition-colors font-medium flex items-center gap-2 cursor-pointer text-white border-white border-2">
-            Aller en Chine
-        </button>
-
+            <button id="btn-china"
+                class="hoshiko2 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 hover:text-white transition-colors font-medium flex items-center gap-2 cursor-pointer text-white border-white border-2">
+                Aller à Pékin
+            </button>
+        </div>
     </nav>
 
-    <!-- canvas de la map -->
     <section>
-        <div id="map"></div>
+        <div id="map" style="width: 100%; height: 100vh;"></div>
     </section>
 
-    <div id="modal-palais-ete" class="fixed inset-0 z-50 flex bg-black/50 hidden">
-        <div id="contenu-modal"
-            class="absolute bg-white rounded-xl shadow-2xl max-w-md w-64 h-64 overflow-hidden border border-white">
-            <img src="images/palaisete.webp" alt="Image du palais d'été"
-                class="absolute inset-0 w-full h-full object-cover">
+    <div id="modal-palais-ete" class="modal-container fixed inset-0 z-50 flex bg-black/50 hidden">
+        <div
+            class="contenu-modal absolute bg-white rounded-xl shadow-2xl w-64 h-64 overflow-hidden border border-white">
+            <img src="images/palaisete.webp" alt="Palais d'été" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 z-10 bg-black/40"></div>
             <div class="absolute bottom-0 z-20">
-                <h1 class="text-white text-2xl font-bold pl-4 pb-5 underline">Le palais d'été</h1>
+                <h1 class="text-white text-md font-bold pl-4 pb-5 underline">La Tour <br>de l'Encens Bouddhique</h1>
             </div>
             <div class="absolute bottom-4 right-4 z-30">
-                <button id="ensavoirplus"
-                    class="bg-white hover:bg-gray-300 transition-colors z-10 rounded-full p-2 shadow-lg cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <button onclick="window.location.href='Modele3D/palaisete.html'"
+                    class="bg-white hover:bg-gray-300 transition-colors rounded-full p-2 shadow-lg cursor-pointer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </button>
             </div>
-
-            <button id="fermer-modal"
-                class="cursor-pointer absolute top-3 right-3 text-white/80 hover:text-white transition-colors z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <button class="fermer-modal cursor-pointer absolute top-3 right-3 text-white/80 hover:text-white z-10">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
@@ -73,16 +73,39 @@
         </div>
     </div>
 
-    <!-- footer -->
+    <div id="modal-bateau-marbre" class="modal-container fixed inset-0 z-50 flex bg-black/50 hidden">
+        <div
+            class="contenu-modal absolute bg-white rounded-xl shadow-2xl w-64 h-64 overflow-hidden border border-white">
+            <img src="images/bateaumarbre.webp" alt="Bateau de marbre"
+                class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 z-10 bg-black/40"></div>
+            <div class="absolute bottom-0 z-20">
+                <h1 class="text-white text-md font-bold pl-4 pb-5 underline">Le bateau <br>de marbre</h1>
+            </div>
+            <div class="absolute bottom-4 right-4 z-30">
+                <button onclick="window.location.href='Modele3D/bateaumarbre.html'"
+                    class="bg-white hover:bg-gray-300 transition-colors rounded-full p-2 shadow-lg cursor-pointer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+            <button class="fermer-modal cursor-pointer absolute top-3 right-3 text-white/80 hover:text-white z-10">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+
     <footer class="absolute bottom-0 left-0 right-0 z-10 flex pointer-events-none">
         <div
             class="bg-white/95 w-full p-4 rounded-t-xl shadow-lg pointer-events-auto flex justify-between items-center">
-
             <div class="flex items-center gap-8">
-                <p class="text-sm text-gray-700">
-                    <span class="font-bold text-black text-lg hoshiko1">SAE - 402</span>
+                <p class="text-sm text-gray-700"><span class="font-bold text-black text-lg hoshiko1">SAE - 402</span>
                 </p>
-
                 <div class="text-xs text-black italic flex items-center gap-2">
                     <p>Par</p>
                     <a href="https://www.linkedin.com/in/maxime-derènes-9b997932a/" target="_blank"
@@ -90,202 +113,133 @@
                     <p>&</p>
                     <a href="https://www.linkedin.com/in/sebastian-chisiu-a115bb338/" target="_blank"
                         class="hover:underline font-bold not-italic">Sébastien Chisiu</a>
-                    <p>|</p>
-                    <a href="https://www.voyage-chine.com/guide-chine/attraction/palais-dete"
-                        class="font-bold not-italic hover:underline">Le palais d'été</a>
                 </div>
             </div>
-
-            <div class="flex items-center">
-                <img src="images/favicon/favicon-96x96.png" alt="favicon" class="h-10 w-auto">
-            </div>
-
+            <img src="images/favicon/favicon-96x96.png" alt="favicon" class="h-10 w-auto">
         </div>
     </footer>
 
-    <!-- script -->
     <script>
-        // token
         mapboxgl.accessToken = 'pk.eyJ1IjoibWxva3M3NyIsImEiOiJjbWw5aW5wamEwNDR5M2ZyNHZqMzZraGZ5In0.J1nH4XDo9xjP2KvduZ07_g';
 
-        // génère la map
         const map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/satellite-streets-v12', // Style réaliste
-            projection: 'globe', // Affiche la terre en 3D
-            center: [104.195, 35.861], // Position de départ (océan)
+            style: 'mapbox://styles/mapbox/satellite-streets-v12',
+            projection: 'globe',
+            center: [104.195, 35.861],
             zoom: 1.5
         });
 
-        // Effet d'atmosphère
         map.on('style.load', () => {
             map.setFog({
-                'color': 'rgb(30, 45, 60)',          // Horizon 
-                'high-color': 'rgb(10, 20, 30)',     // Ciel
-                'space-color': 'rgb(2, 4, 8)',       // Espace 
-                'star-intensity': 0.6                // étoiles
+                'color': 'rgb(30, 45, 60)',
+                'high-color': 'rgb(10, 20, 30)',
+                'space-color': 'rgb(2, 4, 8)',
+                'star-intensity': 0.6
             });
-
-            // relief
             map.addSource('mapbox-dem', {
                 'type': 'raster-dem',
                 'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
                 'tileSize': 512,
                 'maxzoom': 14
             });
-
-            map.setPaintProperty('country-label', 'text-color', '#FFFFFF');
-            map.setLayoutProperty('country-label', 'text-field', ['get', 'name_fr']);
             map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
         });
 
-        // désactive la rotation de la carte avec clic droit
         map.dragRotate.disable();
         map.touchZoomRotate.disableRotation();
-
-        map.getCanvas().style.cursor = 'crosshair'; // Curseur en forme de cible
-
-        // (GeoJSON des pays du monde)
-        const chinaGetJSON = "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson";
+        map.getCanvas().style.cursor = 'crosshair';
 
         const pointsInteret = [
             {
-                nom: "Le Palais d'Été",
-                coords: [116.27500534032944, 39.99988169110557], // Longitude, Latitude
-                id: "palais-ete"
+                nom: "La Tour de l'Encens Bouddhique",
+                coords: [116.2680850, 39.9980],
+                id: "modal-palais-ete"
+            },
+            {
+                nom: "Le Bateau de Marbre",
+                coords: [116.26358, 39.99678], // Attention : Longitude, Latitude 
+                id: "modal-bateau-marbre"
             }
         ];
 
-        // Fonction de zoom sur la Chine
         document.getElementById('btn-china').addEventListener('click', () => {
-            map.flyTo({
-                center: [104.195, 35.861],
-                zoom: 4,
-                essential: true,
-                duration: 5000, // Temps du trajet 
-                curve: 2 // Fluidité 
-            });
+            map.flyTo({ center: [116.4074, 39.9042], zoom: 12, duration: 5000, essential: true });
+        });
+        document.getElementById('btn-tour').addEventListener('click', () => {
+            map.flyTo({ center: [116.2684850, 39.9980244], zoom: 18, duration: 5000, essential: true });
+        });
+        document.getElementById('btn-bateau').addEventListener('click', () => {
+            map.flyTo({ center: [116.26358, 39.99678], zoom: 18, duration: 5000, essential: true });
         });
 
-        // Gestion de l'opacité selon le zoom
-        map.on('zoom', () => {
-            const currentZoom = map.getZoom();
-            const minZoomLimit = 2.5;
-            const maxZoomLimit = 4.5;
-            const maxOpacity = 0.7;
-
-            let opacity = (currentZoom - minZoomLimit) / (maxZoomLimit - minZoomLimit);
-
-            opacity = opacity * maxOpacity;
-
-            if (opacity < 0) opacity = 0;
-            if (opacity > maxOpacity) opacity = maxOpacity;
-
-            if (map.getLayer('masque-chine')) {
-                map.setPaintProperty('masque-chine', 'fill-opacity', opacity);
-            }
-        });
-
-        // Ajouter les marqueurs sur la carte
         pointsInteret.forEach(poi => {
             const el = document.createElement('div');
             el.className = 'marker cursor-pointer';
-            // Injection du SVG directement
             el.innerHTML = `
-                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 21.7C12 21.7 20 14 20 9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9C4 14 12 21.7 12 21.7Z" fill="#E11D48" stroke="white" stroke-width="1.5"/>
                     <circle cx="12" cy="9" r="3" fill="white"/>
-                </svg>
-            `;
-            el.style.width = '42px';
-            el.style.height = '42px';
-            el.style.cursor = 'pointer';
+                </svg>`;
 
-            // Création du marqueur avec les coordonnées du point d'intérêt
-            new mapboxgl.Marker(el)
-                .setLngLat(poi.coords)
-                .addTo(map);
+            new mapboxgl.Marker(el).setLngLat(poi.coords).addTo(map);
 
             el.addEventListener('click', () => {
-                const modal = document.getElementById('modal-palais-ete');
-                const contenuModal = document.getElementById('contenu-modal');
+                fermerTousLesModals();
+                const targetModal = document.getElementById(poi.id);
+                const contenu = targetModal.querySelector('.contenu-modal');
+
+                targetModal.classList.remove('hidden');
+
+                // Positionnement dynamique
                 const point = map.project(poi.coords);
-
-                modal.classList.remove('hidden');
-
-                const margin = 20;
                 const gap = 20;
+                const margin = 20;
 
                 let left = point.x + gap;
-                let top = point.y - (contenuModal.offsetHeight / 2);
+                let top = point.y - (contenu.offsetHeight / 2);
 
-                if (left + contenuModal.offsetWidth > window.innerWidth - margin) {
-                    left = point.x - contenuModal.offsetWidth - gap;
+                if (left + contenu.offsetWidth > window.innerWidth - margin) {
+                    left = point.x - contenu.offsetWidth - gap;
                 }
 
-                if (left < margin) {
-                    left = margin;
-                }
-
-                if (top < margin) {
-                    top = margin;
-                }
-
-                if (top + contenuModal.offsetHeight > window.innerHeight - margin) {
-                    top = window.innerHeight - contenuModal.offsetHeight - margin;
-                }
-                contenuModal.style.left = left + 'px';
-                contenuModal.style.top = top + 'px';
-
-                console.log("Clic sur le marqueur :", poi.nom);
-                Vue3D(poi.id);
+                contenu.style.left = Math.max(margin, left) + 'px';
+                contenu.style.top = Math.max(margin, Math.min(top, window.innerHeight - contenu.offsetHeight - margin)) + 'px';
             });
         });
 
-        function Vue3D(id) {
-            // Ici on insérera le code Three.js / webgl plus tard
+        function fermerTousLesModals() {
+            document.querySelectorAll('.modal-container').forEach(m => m.classList.add('hidden'));
         }
 
-        map.on('load', () => {
-            // Ajouter les données des pays
-            map.addSource('pays', {
-                type: 'geojson',
-                data: chinaGetJSON
-            });
+        // Fermer au clic sur les boutons X ou sur le fond noir
+        document.querySelectorAll('.fermer-modal').forEach(btn => {
+            btn.addEventListener('click', fermerTousLesModals);
+        });
 
-            // Ajouter le masque pour assombrir tout SAUF la Chine
+        document.querySelectorAll('.modal-container').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) fermerTousLesModals();
+            });
+        });
+
+        map.on('load', () => {
+            map.addSource('pays', { type: 'geojson', data: "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson" });
             map.addLayer({
                 'id': 'masque-chine',
                 'type': 'fill',
                 'source': 'pays',
-                'layout': {},
-                'paint': {
-                    'fill-color': '#000',
-                    'fill-opacity': 0
-                },
+                'paint': { 'fill-color': '#000', 'fill-opacity': 0 },
                 'filter': ['!=', ['get', 'ISO3166-1-Alpha-3'], 'CHN']
             });
         });
 
-        // Fermer le modal
-        function fermerModal() {
-            document.getElementById('modal-palais-ete').classList.add('hidden');
-        }
-
-        // Clic sur le bouton X
-        document.getElementById('fermer-modal').addEventListener('click', fermerModal);
-
-        // Clic EN DEHORS du modal
-        document.getElementById('modal-palais-ete').addEventListener('click', (e) => {
-            // Si l'élément cliqué est le fond (l'overlay) et non le contenu blanc
-            if (e.target.id === 'modal-palais-ete') {
-                fermerModal();
+        map.on('zoom', () => {
+            if (map.getLayer('masque-chine')) {
+                const z = map.getZoom();
+                let op = Math.max(0, Math.min(0.7, (z - 2.5) / 2));
+                map.setPaintProperty('masque-chine', 'fill-opacity', op);
             }
-        });
-
-        // Redirection vers la page de détails
-        document.getElementById('ensavoirplus').addEventListener('click', () => {
-            window.location.href = 'Modele3D/palaisete.html';
         });
 
     </script>
