@@ -24,3 +24,83 @@ body {
     font-family: hoshiko;
     font-size: 1rem;
 }
+
+
+
+.bgbateau,
+.bgtour {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    filter: saturate(1.2);
+}
+
+.bgbateau::before,
+.bgtour::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(17, 24, 34, 0.95), rgba(17, 24, 34, 0.2));
+    z-index: -1;
+}
+
+.bgbateau {
+    background-image: linear-gradient(rgba(38, 49, 64, 0.6), rgba(17, 24, 34, 0.6)),
+        url("../images/bateaumarbre.webp");
+    backdrop-filter: blur(8px);
+}
+
+.bgtour {
+    background-image: linear-gradient(rgba(17, 24, 34, 0.6), rgba(17, 24, 34, 0.6)),
+        url("../images/palaisete.webp");
+    backdrop-filter: blur(8px);
+}
+
+.aside-animate {
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.underline-animate {
+    position: relative;
+    display: inline-block;
+}
+
+.underline-animate::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: -8px;
+    left: 0;
+    background-color: #ffffff;
+    transform-origin: bottom right;
+    transition: transform 0.2s ease-out;
+}
+
+.underline-animate:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+model-viewer {
+    --interaction-prompt-style: none;
+    outline: none;
+}
+
+model-viewer::part(default-progress-bar) {
+    background-color: #3b82f6;
+}
