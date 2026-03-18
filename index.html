@@ -22,24 +22,52 @@
 
 <body>
 
-    <nav class="flex justify-between items-center absolute top-0 left-0 right-0 z-10 p-4 w-full ">
-        <div class="backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg border-white border-2">
-            <h1 class="text-2xl font-bold text-white hoshiko2">SAE 402 - Le palais d'été</h1>
-        </div>
-        <div class="flex gap-3">
-            <button id="btn-tour"
-                class="hoshiko2 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 hover:text-white transition-colors font-medium flex items-center gap-2 cursor-pointer text-white border-white border-2">
-                La Tour
-            </button>
-            <button id="btn-bateau"
-                class="hoshiko2 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 hover:text-white transition-colors font-medium flex items-center gap-2 cursor-pointer text-white border-white border-2">
-                Le Bateau
-            </button>
+    <nav class="flex justify-between items-center absolute top-0 left-0 right-0 z-10 p-4 w-full">
+        <section class="flex flex-row gap-4">
+            <div class="backdrop-blur-sm px-6 py-5 rounded-lg shadow-lg border-white border-2">
+                <h1 class="text-2xl font-bold text-white hoshiko2">SAE 402 - Le palais d'été</h1>
+            </div>
+            <div class="flex flex-col justify-center">
+                <button id="mute-btn"
+                    class="cursor-pointer bg-transparent border-white rounded-full border text-white hover:opacity-70 transition-opacity w-10 h-10 flex items-center justify-center">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                </button>
+            </div>
+        </section>
 
-            <button id="btn-china"
-                class="hoshiko2 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 hover:text-white transition-colors font-medium flex items-center gap-2 cursor-pointer text-white border-white border-2">
-                Aller à Pékin
-            </button>
+
+
+        <div class="flex gap-3">
+            <div>
+                <button id="btn-tour"
+                    class="hoshiko2 backdrop-blur-sm px-6 py-3 rounded-t-lg shadow-lg hover:bg-gray-800 hover:text-white transition-colors font-medium flex items-center gap-2 cursor-pointer text-white border-white border-2">
+                    La Tour
+                </button>
+                <a href="/Modele3D/latour.html" target="_blank" rel="noopener noreferrer"
+                    class="backdrop-blur-sm text-white pb-1 hover:bg-gray-800 border-white flex items-center justify-center border-2 rounded-b-lg text-center">
+                    Visiter la page
+                </a>
+            </div>
+            <div>
+                <button id="btn-bateau"
+                    class="hoshiko2 backdrop-blur-sm px-6 py-3 rounded-t-lg shadow-lg hover:bg-gray-800 hover:text-white transition-colors font-medium flex items-center gap-2 cursor-pointer text-white border-white border-2">
+                    Le Bateau
+                </button>
+                <a href="/Modele3D/bateaumarbre.html" target="_blank" rel="noopener noreferrer"
+                    class="backdrop-blur-sm text-white pb-1 hover:bg-gray-800 border-white flex items-center justify-center border-2 rounded-b-lg text-center">
+                    Visiter la page
+                </a>
+            </div>
+            <div>
+                <button id="btn-china"
+                    class="hoshiko2 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg hover:bg-gray-800 hover:text-white transition-colors font-medium flex items-center gap-2 cursor-pointer text-white border-white border-2">
+                    Aller à Pékin
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -243,6 +271,7 @@
         });
 
     </script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

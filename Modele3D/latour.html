@@ -27,11 +27,20 @@
         <aside
             class="w-1/3 min-w-[350px] flex flex-col border-r border-white/10 p-8 bgtour aside-animate overflow-y-auto">
 
-            <div class="flex-none pb-8">
+            <div class="flex-none pb-8 flex items-center justify-between">
                 <a href="../index.html"
                     class="flex items-center gap-2 text-white/70 hover:text-white transition-colors group cursor-pointer">
                     <span class="font-medium text-xl underline-animate">Retour à la carte</span>
                 </a>
+
+                <button id="mute-btn"
+                    class="cursor-pointer bg-transparent border-white rounded-full border text-white hover:opacity-70 transition-opacity w-10 h-10 flex items-center justify-center">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                </button>
             </div>
 
             <div class="flex flex-col justify-start">
@@ -43,7 +52,8 @@
                     <div class="p-6 rounded-2xl bg-white/80 border border-white/10 backdrop-blur-sm">
                         <p class="text-black leading-6 italic text-md indent-8">
                             Érigée entre 1750 et 1764 sous le règne de l’empereur Qianlong, cette tour monumentale fut
-                            conçue comme le point focal du Palais d’Été. La tour fut construite avec pour ambition
+                            conçue comme le point le plus haut du Palais d’Été. La tour fut construite avec pour
+                            ambition
                             d'avoir 9 étages, mais celle-ci fut transformée en tour bouddhiste lors de la construction
                             du 8e étage. <br><br>
                         </p>
@@ -59,10 +69,13 @@
                         <p class="text-black leading-6 italic text-md indent-8">
                             Les pèlerins bouddhistes viennent prier et faire des offrandes en
                             ce lieu. La tour illustre comment le pouvoir impérial et la dévotion religieuse
-                            s'entrelaçaient dans la culture chinoise. En décembre 1998, l'UNESCO inclut le Palais d’Été
+                            s'entrelaçaient dans la culture chinoise. <br><br>En décembre 1998, l'UNESCO inclut le
+                            Palais
+                            d’Été
                             dans sa liste du patrimoine mondial. La tour reste l'emblème dominant de Pékin, offrant aux
                             visiteurs une vue panoramique sur l’ensemble du Palais d’Été.
                         </p>
+                        <h1 class="mt-5 text-sm text-black text-right">Par Maxime Derènes</h1>
                     </div>
 
                     <div
@@ -87,7 +100,7 @@
         </aside>
 
         <main class="flex-1 relative">
-            <model-viewer src="./malevolent_shrine__jujutsu_kaisen.glb" alt="Autel Malveillant" auto-rotate
+            <model-viewer src="./dog.glb" alt="Autel Malveillant" autoplay animation-name="Idle" auto-rotate
                 camera-controls touch-action="pan-y" shadow-intensity="2" shadow-softness="1" exposure="1.2"
                 skybox-image="./sky.hdr" environment-intensity="1.5" class="w-full h-full outline-none"
                 style="--poster-color: transparent;">
@@ -97,4 +110,7 @@
     </div>
 </body>
 
+
 </html>
+
+<script src="../js/secondary.js"></script>
