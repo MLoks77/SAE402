@@ -50,25 +50,24 @@
 
                     <div class="p-6 rounded-2xl bg-white/80 border border-white/10 backdrop-blur-sm">
                         <p class="text-black leading-6 text-md indent-8">
-                            Édifié initialement en 1755 par l’empereur Qianlong, ce pavillon symbolisait la stabilité
-                            éternelle de la dynastie. Après sa destruction en 1860, l’impératrice Cixi ordonna sa
-                            reconstruction en 1893, utilisant des fonds initialement destinés à la modernisation de la
-                            marine impériale chinoise, un choix historique resté célèbre pour son audace.<br><br>
+                            Le "Bateau de Marbre" est une structure assez surprenante par sa conception.
+                            Contrairement à ce que son nom indique, seule sa coque de 36 mètres de long
+                            est réellement constituée de blocs de pierre massive sculptés, le tout étant soutenu par des piliers en pierre cachés sous l'eau. 
+                            Le reste du bâtiment a été construit en bois, mais avec un effet de peinture en trompe-l'œil
+                            qui imite parfaitement le marbre pour conserver une esthétique haut de gamme
+                            tout en allégeant l'ensemble.<br><br>
 
-                            Bien que surnommé "Bateau de Marbre", seule sa coque de 36 mètres de long est constituée de
-                            blocs de pierre massive sculptés. La superstructure originale en bois fut remplacée par une
-                            imitation de marbre peint sur bois pour plus de légèreté. Les techniques de construction
-                            mêlent l'esthétique chinoise à des influences européennes : on y trouve des roues à aubes
-                            factices sur les flancs, des miroirs incrustés et un sol en carrelage géométrique. Le toit
-                            est équipé de gouttières ingénieuses qui rejettent l'eau de pluie par quatre têtes de
-                            dragons sculptées, démontrant un mélange unique de design hydraulique et de symbolisme
-                            impérial.<br><br>
+                            Au niveau du design, on retrouve un mélange d'influences assez original.
+                            La base respecte les codes chinois traditionnels, mais plusieurs détails
+                            viennent d'Europe, comme les roues à aubes sur les côtés (qui sont purement
+                            décoratives) ou le sol en carrelage aux motifs géométriques. C'est un vrai
+                            témoignage d'ouverture architecturale pour l'époque.<br><br>
 
-                            Le bateau servait de pavillon de thé et de lieu de détente. L'impératrice y contemplait les
-                            jardins tout en profitant de la brise fraîche du lac durant les étés caniculaires.<br><br>
-
-                            Désormais amarré sur la rive nord, ce navire immobile est l'une des curiosités
-                            photographiques les plus prisées des touristes du monde entier.
+                            Enfin, la technique n'est pas en reste avec des détails bien pensés comme
+                            les gouttières : l'eau de pluie est évacuée à travers quatre têtes de
+                            dragons sculptées, alliant ainsi utilité et symbolisme. Aujourd'hui,
+                            amarré sur la rive nord, c'est devenu l'un des points de vue les plus
+                            appréciés pour son apparence unique et ses détails soignés.
                         </p>
                         <h1 class="mt-5 text-sm text-black text-right">Par Sébastien Chisiu</h1>
                     </div>
@@ -103,13 +102,21 @@
             </div>
 
         </aside>
-
         <main class="flex-1 relative">
-
-            <model-viewer id="tour-viewer" src="tourencens.glb" alt="La Tour de l'Encens Bouddhiste" autoplay
+            <model-viewer id="tour-viewer" src="../assets/models/bateaumarbre/Bateau.glb" alt="Le Bateau de marbre" autoplay
                 auto-rotate rotation-per-second="-10deg" camera-controls touch-action="pan-y" shadow-intensity="2"
                 shadow-softness="1" exposure="1.2" skybox-image="./sky.hdr" environment-intensity="1.5"
                 interaction-prompt="none" class="w-full h-full outline-none" style="--poster-color: transparent;">
+
+                <button class="Hotspot-tour" slot="hotspot-wheel" data-position="30m 10m 0m" data-normal="0m 0m 0m"
+                    data-visibility-attribute="visible">
+                    <div class="HotspotAnnotation">ici est l'entrée du monument. Les roues à aubes sont décoratives. Le bateau ne bouge pas.</div>
+                </button>
+
+                <button class="Hotspot-tour" slot="hotspot-hull" data-position="0m 0m 0m" data-normal="0m 0m 0m"
+                    data-visibility-attribute="visible">
+                    <div class="HotspotAnnotation">La coque de 36 mètres est la seule partie réellement faite de pierre massive. La coque est également soutenue par des pilliers en pierre sous l'eau.</div>
+                </button>
 
                 <div class="progress-bar hide" slot="progress-bar">
                     <div class="update-bar"></div>
