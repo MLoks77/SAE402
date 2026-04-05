@@ -160,20 +160,20 @@ document.addEventListener('DOMContentLoaded', () => {
             bateau: {
                 siteTitle: "The Marble Boat",
                 mainText: `The "Marble Boat" is a structure with a surprising design. 
-                           Contrary to its name, only its 36-meter-long hull is actually made of massive carved stone blocks, 
-                           all supported by stone pillars hidden underwater. 
-                           The rest of the building was constructed of wood, but with a trompe-l'oeil painting effect 
-                           that perfectly imitates marble to maintain a high-end aesthetic while lightening the whole.<br><br>
+                           Contrary to its name, only its 36-meter-long hull is actually made of massive stone, 
+                           all supported by stone pillars underwater. 
+                           The rest of the monument was constructed of wood, but with a painting effect 
+                           that imitates marble to have the same design while keeping it light.<br><br>
 
-                           In terms of design, we find an original blend of influences. 
-                           The base follows traditional Chinese codes, but several details come from Europe, 
-                           such as the paddle wheels on the sides (which are purely decorative) or the floor in 
-                           geometric tile patterns. It is a true testament to architectural openness for the time.<br><br>
+                           For the design, we find an blend of influences. 
+                           The base follows traditional Chinese codes, but some details come from Europe, 
+                           such as the paddle wheels on the sides (which are decorative) or the floor in 
+                           tile patterns. It is a true testament to architectural opening for the time.<br><br>
 
-                           Finally, the technology is not to be outdone with well-thought-out details like 
-                           the gutters: rainwater is evacuated through four carved dragon heads, 
-                           thus combining utility and symbolism. Today, moored on the north shore, 
-                           it has become one of the most appreciated viewpoints for its unique appearance and neat details.`,
+                           Finally, the technology is not to be outdone with details like 
+                           the gutters: water is evacuated through carved dragon heads, combining utility and symbolism. 
+                           Today, located on the north shore, it has become one of the most appreciated viewpoints 
+                           for its unique appearance and meticulous details.`,
                 hotspot1: "Here is the entrance to the monument. The entrance fee for a half-day is around €70.",
                 hotspot2: "The structure is solid, it hasn't moved despite years of erosion from Lake Kunming."
             },
