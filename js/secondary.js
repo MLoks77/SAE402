@@ -89,7 +89,93 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             eyeContainer.innerHTML = hotspotsVisible ? eyeOpen : eyeClosed;
-            toggleText.textContent = hotspotsVisible ? "Cacher les Hotspots" : "Afficher les Hotspots";
+            toggleText.textContent = hotspotsVisible ? (currentLang === 'fr' ? "Cacher les Hotspots" : "Hide Hotspots") : (currentLang === 'fr' ? "Afficher les Hotspots" : "Show Hotspots");
+        });
+    }
+
+    // Gestion de la Langue (FR / EN)
+    const langBtn = document.getElementById('lang-btn');
+    let currentLang = 'fr';
+
+    const translations = {
+        fr: {
+            siteTitle: "Le Bateau de Marbre",
+            mainText: `Le "Bateau de Marbre" est une structure assez surprenante par sa conception.
+                       Contrairement à ce que son nom indique, seule sa coque de 36 mètres de long
+                       est réellement constituée de blocs de pierre massive sculptés, le tout étant soutenu par des piliers en pierre cachés sous l'eau. 
+                       Le reste du bâtiment a été construit en bois, mais avec un effet de peinture en trompe-l'œil
+                       qui imite parfaitement le marbre pour conserver une esthétique haut de gamme
+                       tout en allégeant l'ensemble.<br><br>
+
+                       Au niveau du design, on retrouve un mélange d'influences assez original.
+                       La base respecte les codes chinois traditionnels, mais plusieurs détails
+                       viennent d'Europe, comme les roues à aubes sur les côtés (qui sont purement
+                       décoratives) ou le sol en carrelage aux motifs géométriques. C'est un vrai
+                       témoignage d'ouverture architecturale pour l'époque.<br><br>
+
+                       Enfin, la technique n'est pas en reste avec des détails bien pensés comme
+                       les gouttières : l'eau de pluie est évacuée à travers quatre têtes de
+                       dragons sculptées, alliant ainsi utilité et symbolisme. Aujourd'hui,
+                       amarré sur la rive nord, c'est devenu l'un des points de vue les plus
+                       appréciés pour son apparence unique et ses détails soignés.`,
+            byText: "Par",
+            view3dTitle: "Vue 3D",
+            instrRotate: "Utilisez le clic gauche pour pivoter",
+            instrMove: "Utilisez le clic droit pour se déplacer",
+            instrZoom: "Utilisez la molette pour zoomer",
+            toggleHide: "Cacher les Hotspots",
+            toggleShow: "Afficher les Hotspots",
+            hotspotWheel: "ici est l'entrée du monument. L'entrée pour une demi-journée est de 70€ environ.",
+            hotspotHull: "La structure est tellement solide qu'elle n'a pas bougé d'un millimètre malgré les siècles d'érosion due au lac Kunming.",
+            modeledBy: "Modélisé par"
+        },
+        en: {
+            siteTitle: "The Marble Boat",
+            mainText: `The "Marble Boat" is a structure with a surprising design. 
+                       Contrary to its name, only its 36-meter-long hull is actually made of massive carved stone blocks, 
+                       all supported by stone pillars hidden underwater. 
+                       The rest of the building was constructed of wood, but with a trompe-l'oeil painting effect 
+                       that perfectly imitates marble to maintain a high-end aesthetic while lightening the whole.<br><br>
+
+                       In terms of design, we find an original blend of influences. 
+                       The base follows traditional Chinese codes, but several details come from Europe, 
+                       such as the paddle wheels on the sides (which are purely decorative) or the floor in 
+                       geometric tile patterns. It is a true testament to architectural openness for the time.<br><br>
+
+                       Finally, the technology is not to be outdone with well-thought-out details like 
+                       the gutters: rainwater is evacuated through four carved dragon heads, 
+                       thus combining utility and symbolism. Today, moored on the north shore, 
+                       it has become one of the most appreciated viewpoints for its unique appearance and neat details.`,
+            byText: "By",
+            view3dTitle: "3D View",
+            instrRotate: "Use left click to rotate",
+            instrMove: "Use right click to move",
+            instrZoom: "Use the scroll wheel to zoom",
+            toggleHide: "Hide Hotspots",
+            toggleShow: "Show Hotspots",
+            hotspotWheel: "Here is the entrance to the monument. The entrance fee for a half-day is around €70.",
+            hotspotHull: "The structure is so solid that it hasn't moved a millimeter despite centuries of erosion from Kunming Lake.",
+            modeledBy: "Modeled by"
+        }
+    };
+
+    if (langBtn) {
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            langBtn.querySelector('span').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+            
+            // Appliquer les traductions
+            document.getElementById('site-title').textContent = translations[currentLang].siteTitle;
+            document.getElementById('main-text').innerHTML = translations[currentLang].mainText;
+            document.getElementById('by-text').textContent = translations[currentLang].byText;
+            document.getElementById('view3d-title').textContent = translations[currentLang].view3dTitle;
+            document.getElementById('instr-rotate').textContent = translations[currentLang].instrRotate;
+            document.getElementById('instr-move').textContent = translations[currentLang].instrMove;
+            document.getElementById('instr-zoom').textContent = translations[currentLang].instrZoom;
+            document.getElementById('toggle-text').textContent = hotspotsVisible ? translations[currentLang].toggleHide : translations[currentLang].toggleShow;
+            document.getElementById('hotspot-wheel-text').textContent = translations[currentLang].hotspotWheel;
+            document.getElementById('hotspot-hull-text').textContent = translations[currentLang].hotspotHull;
+            document.getElementById('modeled-by').textContent = translations[currentLang].modeledBy;
         });
     }
 
