@@ -102,3 +102,108 @@ model-viewer {
 model-viewer::part(default-progress-bar) {
     background-color: #3b82f6;
 }
+
+.Hotspot {
+    background: #fff;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 4px solid #fff;
+    padding: 0;
+    z-index: 50;
+}
+
+.Hotspot:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.Hotspot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: white;
+    opacity: 0.5;
+    animation: pulse 2s infinite ease-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}
+
+
+.HotspotAnnotation {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    color: #1a1a1a;
+    display: block;
+    font-size: 0.95rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    left: 50%;
+    bottom: calc(100% + 1.5rem);
+    max-width: 320px;
+    padding: 1.5rem;
+    position: absolute;
+    transform: translateX(-50%) translateY(-20px);
+    width: max-content;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    line-height: 1.6;
+    z-index: 100;
+}
+
+
+@media (max-width: 768px) {
+    .HotspotAnnotation {
+        left: 50%;
+        top: calc(100% + 1rem);
+        transform: translateX(-50%) translateY(10px);
+        max-width: 250px;
+        padding: 1rem;
+    }
+
+    .Hotspot:focus .HotspotAnnotation {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+
+
+/* Hide text for it to appear only when we click (focus) the hotspot */
+.Hotspot:focus .HotspotAnnotation {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+
+
+/* model-viewer default occlusion management */
+.Hotspot:not([data-visible]) {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.5);
+}
