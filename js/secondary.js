@@ -112,4 +112,21 @@ document.addEventListener('DOMContentLoaded', () => {
     interactions.forEach(event => {
         document.addEventListener(event, unlockAudio, true);
     });
+
+    const modelViewer = document.querySelector('model-viewer');
+    const progressBar = document.querySelector('.progress-bar');
+    const updateBar = document.querySelector('.update-bar');
+
+    if (modelViewer && progressBar && updateBar) {
+        modelViewer.addEventListener('progress', (event) => {
+            const { totalProgress } = event.detail;
+            updateBar.style.width = `${totalProgress * 100}%`;
+
+            if (totalProgress === 1) {
+                progressBar.classList.add('hide');
+            } else {
+                progressBar.classList.remove('hide');
+            }
+        });
+    }
 });
