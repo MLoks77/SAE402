@@ -49,7 +49,7 @@
                         La Tour de l'Encens Bouddhiste
                     </h1>
 
-                    <div class="p-6 rounded-2xl bg-white/80 border border-white/10 backdrop-blur-sm">
+                    <div class="p-6 bg-white/80 border border-black/10 backdrop-blur-sm">
                         <p class="text-black leading-6 text-md indent-8">
                             Érigée entre 1750 et 1764 sous le règne de l’empereur Qianlong, cette tour monumentale fut
                             conçue comme le point le plus haut du Palais d’Été. La tour fut construite avec pour
@@ -75,12 +75,11 @@
                             dans sa liste du patrimoine mondial. La tour reste l'un des endroits de Pékin, offrant aux
                             visiteurs une des meilleures vues sur la ville et l'ensemble du Palais d’Été.
                         </p>
-                        <h1 class="mt-5 text-sm text-black text-right">Par Maxime Derènes</h1>
+                        <p class="mt-5 text-sm text-black text-right">Par Maxime Derènes</p>
                     </div>
 
-                    <div>
                         <ul
-                            class="flex flex-col justify-center items-center p-4 bg-white/80 border border-white/10 rounded-xl text-black font-medium uppercase tracking-widest gap-2 mb-4 list-none text-center">
+                            class="flex flex-col justify-center items-center p-4 bg-white/80 border border-black/10 text-black font-medium uppercase tracking-widest gap-2 mb-4 list-none text-center">
                             <h1 class="text-xl underline underline-offset-4 mb-2">Vue 3D</h1>
                             <li>Utilisez le clic gauche pour pivoter</li>
                             <li>Utilisez le clic droit pour se déplacer</li>
@@ -92,32 +91,30 @@
                                 </a>
                             </li>
                         </ul>
-                        <button id="toggle-hotspots"
-                            class="w-full flex justify-center items-center gap-3 p-4 bg-white/80 border border-white/10 rounded-xl text-black font-medium uppercase tracking-widest hover:bg-white transition-colors cursor-pointer mb-10 shadow-sm">
-                            <span id="eye-icon-container">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                            </span>
-                            <span id="toggle-text">Cacher les Hotspots</span>
-                        </button>
                     </div>
                 </div>
 
-
-            </div>
-
         </aside>
 
-        <main class="flex-1 relative">
+        <main class="flex-1 relative overflow-hidden bg-white">
+
+            <button id="toggle-hotspots"
+                class="absolute top-4 right-4 z-50 flex justify-center items-center gap-3 p-4 bg-white/80 border border-black/10 rounded-xl text-black font-medium uppercase tracking-widest hover:bg-white transition-all cursor-pointer shadow-sm group">
+                <span id="eye-icon-container">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="group-hover:scale-110 transition-transform">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </span>
+                <span id="toggle-text" class="text-sm">Cacher les Hotspots</span>
+            </button>
 
             <model-viewer id="tour-viewer" src="tourencens.glb" alt="La Tour de l'Encens Bouddhiste" autoplay
                 auto-rotate rotation-per-second="-10deg" camera-controls touch-action="pan-y" shadow-intensity="2"
                 shadow-softness="1" exposure="1.2" skybox-image="./sky.hdr" environment-intensity="1.5"
-                interaction-prompt="none" class="w-full h-full outline-none" style="--poster-color: transparent;">
-
+                interaction-prompt="none" class="w-full h-full outline-none z-30" style="--poster-color: transparent;">
 
                 <button class="Hotspot-tour" slot="hotspot-1" data-surface="16 0 266 170 74 0.281 0.418 0.301"
                     data-visibility-attribute="visible">
@@ -138,6 +135,8 @@
                 class="absolute bottom-4 right-4 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full text-[10px] text-[#1a1a1a] font-bold tracking-widest uppercase border border-white/30 shadow-lg pointer-events-none z-50 transition-opacity duration-1000">
                 Modélisé par Maxime Derènes</div>
         </main>
+
+
 
     </div>
 </body>
