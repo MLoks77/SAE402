@@ -49,7 +49,7 @@
                     </h1>
 
                     <div class="p-6 rounded-2xl bg-white/80 border border-white/10 backdrop-blur-sm">
-                        <p class="text-black leading-6 italic text-lg">
+                        <p class="text-black leading-6 text-md indent-8">
                             Édifié initialement en 1755 par l’empereur Qianlong, ce pavillon symbolisait la stabilité
                             éternelle de la dynastie. Après sa destruction en 1860, l’impératrice Cixi ordonna sa
                             reconstruction en 1893, utilisant des fonds initialement destinés à la modernisation de la
@@ -81,7 +81,7 @@
                             <p>Utilisez la molette pour zoomer</p>
                             <a href="https://mloks77.github.io/SAE402/" target="_blank"
                                 class="flex justify-center text-[10px] uppercase tracking-wider text-blue-500 hover:text-blue-600 flex items-center gap-1.5">
-                                <span>Github</span>
+                                <span>Github du projet</span>
                             </a>
                         </li>
                     </div>
@@ -91,12 +91,16 @@
         </aside>
 
         <main class="flex-1 relative">
-            <model-viewer src="./dog.glb" alt="Autel Malveillant" autoplay animation-name="Idle" auto-rotate
-                camera-controls touch-action="pan-y" shadow-intensity="2" shadow-softness="1" exposure="1.2"
-                skybox-image="./sky.hdr" environment-intensity="1.5" class="w-full h-full outline-none"
-                style="--poster-color: transparent;">
+
+            <model-viewer id="tour-viewer" src="palaisete.glb" alt="La Tour de l'Encens Bouddhiste" autoplay auto-rotate
+                rotation-per-second="-10deg" camera-controls touch-action="pan-y" shadow-intensity="2"
+                shadow-softness="1" exposure="1.2" skybox-image="./sky.hdr" environment-intensity="1.5"
+                interaction-prompt="none" class="w-full h-full outline-none" style="--poster-color: transparent;">
+
+                <div class="progress-bar hide" slot="progress-bar">
+                    <div class="update-bar"></div>
+                </div>
             </model-viewer>
-        </main>
     </div>
 </body>
 

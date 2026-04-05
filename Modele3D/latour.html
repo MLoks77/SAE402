@@ -86,7 +86,7 @@
                             <p>Utilisez la molette pour zoomer</p>
                             <a href="https://mloks77.github.io/SAE402/" target="_blank"
                                 class="flex justify-center text-[10px] uppercase tracking-wider text-blue-500 hover:text-blue-600 flex items-center gap-1.5">
-                                <span>Github</span>
+                                <span>Github du projet</span>
                             </a>
                         </li>
                     </div>
@@ -99,19 +99,19 @@
 
         <main class="flex-1 relative">
 
-            <model-viewer src="palaisete.glb" alt="La Tour de l'Encens Bouddhiste" autoplay rotation-speed="0.2"
-                camera-controls touch-action="pan-y" shadow-intensity="2" shadow-softness="1" exposure="1.2"
-                skybox-image="./sky.hdr" environment-intensity="1.5" class="w-full h-full outline-none"
-                style="--poster-color: transparent;">
+            <model-viewer id="tour-viewer" src="palaisete.glb" alt="La Tour de l'Encens Bouddhiste" autoplay auto-rotate
+                rotation-per-second="-10deg" camera-controls touch-action="pan-y" shadow-intensity="2"
+                shadow-softness="1" exposure="1.2" skybox-image="./sky.hdr" environment-intensity="1.5"
+                interaction-prompt="none" class="w-full h-full outline-none" style="--poster-color: transparent;">
 
 
-                <button class="Hotspot" slot="hotspot-1" data-surface="16 0 266 170 74 0.281 0.418 0.301"
+                <button class="Hotspot-tour" slot="hotspot-1" data-surface="16 0 266 170 74 0.281 0.418 0.301"
                     data-visibility-attribute="visible">
                     <div class="HotspotAnnotation">Ce ornement en forme de bouchon protège le sommet de la tour.
                         ll couronne l’édifice et marque le point le
                         plus élevé de la Colline de la Longévité.</div>
                 </button>
-                <button class="Hotspot" slot="hotspot-2" data-surface="2 0 119 655 684 0.046 0.919 0.035"
+                <button class="Hotspot-tour" slot="hotspot-2" data-surface="2 0 119 655 684 0.046 0.919 0.035"
                     data-visibility-attribute="visible">
                     <div class="HotspotAnnotation">L'accès à la tour est réglementé et nécessite un billet.
                     </div>
