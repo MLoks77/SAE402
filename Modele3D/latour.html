@@ -54,8 +54,8 @@
                             Érigée entre 1750 et 1764 sous le règne de l’empereur Qianlong, cette tour monumentale fut
                             conçue comme le point le plus haut du Palais d’Été. La tour fut construite avec pour
                             ambition
-                            d'avoir 9 étages, mais celle-ci fut transformée en tour bouddhiste lors de la construction
-                            du 8e étage. <br><br>
+                            d'avoir 9 étages, mais celle-ci fut transformée en tour bouddhiste lors de sa construction
+                            .<br><br>
                         </p>
                         <p class="text-black leading-6 text-md indent-8">
                             La tour s'élève à 41 mètres, repose sur une base massive de 21 mètres en pierre
@@ -80,7 +80,8 @@
 
                     <div>
                         <li
-                            class="flex justify-center items-center p-4 bg-white/80 border border-white/10 rounded-xl text-black font-medium uppercase tracking-widest flex flex-col gap-2 mb-10">
+                            class="flex justify-center items-center p-4 bg-white/80 border border-white/10 rounded-xl text-black font-medium uppercase tracking-widest flex flex-col gap-2 mb-4">
+                            <h1 class="text-xl underline underline-offset-4">Vue 3D</h1>
                             <p>Utilisez le clic gauche pour pivoter</p>
                             <p>Utilisez le clic droit pour se déplacer</p>
                             <p>Utilisez la molette pour zoomer</p>
@@ -89,6 +90,17 @@
                                 <span>Github du projet</span>
                             </a>
                         </li>
+                        <button id="toggle-hotspots"
+                            class="w-full flex justify-center items-center gap-3 p-4 bg-white/80 border border-white/10 rounded-xl text-black font-medium uppercase tracking-widest hover:bg-white transition-colors cursor-pointer mb-10 shadow-sm">
+                            <span id="eye-icon-container">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </span>
+                            <span id="toggle-text">Cacher les Hotspots</span>
+                        </button>
                     </div>
                 </div>
 
@@ -109,7 +121,7 @@
                     data-visibility-attribute="visible">
                     <div class="HotspotAnnotation">Ce ornement en forme de bouchon protège le sommet de la tour.
                         ll couronne l’édifice et marque le point le
-                        plus élevé de la Colline de la Longévité.</div>
+                        plus élevé du Palais d'été.</div>
                 </button>
                 <button class="Hotspot-tour" slot="hotspot-2" data-surface="2 0 119 655 684 0.046 0.919 0.035"
                     data-visibility-attribute="visible">

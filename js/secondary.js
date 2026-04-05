@@ -70,12 +70,46 @@ document.addEventListener('DOMContentLoaded', () => {
         muteBtn.addEventListener('click', toggleMute);
     }
 
-    // Débloquer l'audio au premier clic sur la page
+    // Gestion des Hotspots (Cacher / Afficher)
+    const toggleBtn = document.getElementById('toggle-hotspots');
+    const eyeContainer = document.getElementById('eye-icon-container');
+    const toggleText = document.getElementById('toggle-text');
+    let hotspotsVisible = true;
+
+    const eyeOpen = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
+    const eyeClosed = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`;
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            hotspotsVisible = !hotspotsVisible;
+            const hotspots = document.querySelectorAll('.Hotspot-tour');
+
+            hotspots.forEach(h => {
+                h.style.display = hotspotsVisible ? 'block' : 'none';
+            });
+
+            eyeContainer.innerHTML = hotspotsVisible ? eyeOpen : eyeClosed;
+            toggleText.textContent = hotspotsVisible ? "Cacher les Hotspots" : "Afficher les Hotspots";
+        });
+    }
+
+    // Débloquer l'audio lors de n'importe quelle interaction utilisateur
     const unlockAudio = () => {
         if (!isMuted && audioFiles.background.paused) {
-            audioFiles.background.play().catch(e => console.log("Audio bloqué", e));
+            audioFiles.background.play()
+                .then(() => nettoyerListeners())
+                .catch(e => console.error("Échec audio :", e));
+        } else {
+            nettoyerListeners();
         }
-        document.removeEventListener('click', unlockAudio);
     };
-    document.addEventListener('click', unlockAudio);
+
+    const interactions = ['click', 'keydown', 'mousedown', 'touchstart'];
+    const nettoyerListeners = () => {
+        interactions.forEach(event => document.removeEventListener(event, unlockAudio, true));
+    };
+
+    interactions.forEach(event => {
+        document.addEventListener(event, unlockAudio, true);
+    });
 });

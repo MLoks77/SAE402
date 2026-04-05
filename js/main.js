@@ -73,9 +73,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const unlockAudio = () => {
         if (!isMuted && audioFiles.background.paused) {
-            audioFiles.background.play().catch(e => console.log("Audio bloqué", e));
+            audioFiles.background.play()
+                .then(() => {
+                    console.log("Audio lancé avec succès !");
+                    nettoyerListeners();
+                })
+                .catch(e => console.error("Échec du lancement audio :", e));
+        } else {
+            nettoyerListeners();
         }
-        document.removeEventListener('click', unlockAudio);
     };
-    document.addEventListener('click', unlockAudio);
+
+    const interactions = ['click', 'keydown', 'mousedown', 'touchstart'];
+
+    const nettoyerListeners = () => {
+        interactions.forEach(event => {
+            document.removeEventListener(event, unlockAudio, true);
+        });
+    };
+
+    interactions.forEach(event => {
+        document.addEventListener(event, unlockAudio, true);
+    });
 });
