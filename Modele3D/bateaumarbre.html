@@ -74,17 +74,19 @@
                     </div>
 
                     <div>
-                        <li
-                            class="flex justify-center items-center p-4 bg-white/80 border border-white/10 rounded-xl text-black font-medium uppercase tracking-widest flex flex-col gap-2 mb-4">
-                            <h1 class="text-xl underline underline-offset-4">Vue 3D</h1>
-                            <p>Utilisez le clic gauche pour pivoter</p>
-                            <p>Utilisez le clic droit pour se déplacer</p>
-                            <p>Utilisez la molette pour zoomer</p>
-                            <a href="https://mloks77.github.io/SAE402/" target="_blank"
-                                class="flex justify-center text-[10px] uppercase tracking-wider text-blue-500 hover:text-blue-600 flex items-center gap-1.5">
-                                <span>Github du projet</span>
-                            </a>
-                        </li>
+                        <ul
+                            class="flex flex-col justify-center items-center p-4 bg-white/80 border border-white/10 rounded-xl text-black font-medium uppercase tracking-widest gap-2 mb-4 list-none text-center">
+                            <h1 class="text-xl underline underline-offset-4 mb-2">Vue 3D</h1>
+                            <li>Utilisez le clic gauche pour pivoter</li>
+                            <li>Utilisez le clic droit pour se déplacer</li>
+                            <li>Utilisez la molette pour zoomer</li>
+                            <li class="mt-2">
+                                <a href="https://mloks77.github.io/SAE402/" target="_blank"
+                                    class="text-[10px] text-blue-500 hover:text-blue-600 flex items-center gap-1.5 justify-center">
+                                    <span>Github du projet</span>
+                                </a>
+                            </li>
+                        </ul>
                         <button id="toggle-hotspots"
                             class="w-full flex justify-center items-center gap-3 p-4 bg-white/80 border border-white/10 rounded-xl text-black font-medium uppercase tracking-widest hover:bg-white transition-colors cursor-pointer mb-10 shadow-sm">
                             <span id="eye-icon-container">
@@ -113,6 +115,10 @@
                     <div class="update-bar"></div>
                 </div>
             </model-viewer>
+            <div
+                class="absolute bottom-4 right-4 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full text-[10px] text-[#1a1a1a] font-bold tracking-widest uppercase border border-white/30 shadow-lg pointer-events-none z-50 transition-opacity duration-1000">
+                Modélisé par Sébastien Chisiu</div>
+        </main>
     </div>
 </body>
 
