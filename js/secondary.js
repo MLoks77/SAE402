@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
                            The rest of the monument was constructed of wood, but with a painting effect 
                            that imitates marble to have the same design while keeping it light.<br><br>
 
-                           For the design, we find an blend of influences. 
+                           For the design, we find a blend of influences. 
                            The base follows traditional Chinese codes, but some details come from Europe, 
                            such as the paddle wheels on the sides (which are decorative) or the floor in 
                            tile patterns. It is a true testament to architectural opening for the time.<br><br>
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             tour: {
                 siteTitle: "Tower of Buddhist Incense",
-                mainText: `Built between 1750 and 1764 during the reign of Emperor Qianlong, this monumental tower was 
+                mainText: `Built between 1750 and 1764 during the reign of Emperor Qianlong, this tower was 
                            designed as the highest point of the Summer Palace. The tower was built with the 
                            ambition of having 9 floors, but it was transformed into a Buddhist tower during its construction 
                            and now has only 3 floors.<br><br>
@@ -217,10 +217,10 @@ document.addEventListener('DOMContentLoaded', () => {
         langBtn.addEventListener('click', () => {
             currentLang = currentLang === 'fr' ? 'en' : 'fr';
             langBtn.querySelector('span').textContent = currentLang === 'fr' ? 'EN' : 'FR';
-            
+
             // Détecter quelle page on traduit
-            const isTour = document.getElementById('site-title').textContent.includes('Tour') || 
-                           document.getElementById('site-title').textContent.includes('Tower');
+            const isTour = document.getElementById('site-title').textContent.includes('Tour') ||
+                document.getElementById('site-title').textContent.includes('Tower');
             const pageData = isTour ? translations[currentLang].tour : translations[currentLang].bateau;
             const common = translations[currentLang].common;
 
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Appliquer les traductions spécifiques
             document.getElementById('site-title').textContent = pageData.siteTitle;
             document.getElementById('main-text').innerHTML = pageData.mainText;
-            
+
             // Hotspots (on utilise 1 et 2 pour la Tour, wheel et hull pour le Bateau)
             if (isTour) {
                 document.getElementById('hotspot-1-text').textContent = pageData.hotspot1;
