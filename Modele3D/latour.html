@@ -33,31 +33,36 @@
                     <span class="font-medium text-xl underline-animate">Retour à la carte</span>
                 </a>
 
-                <button id="mute-btn"
-                    class="cursor-pointer bg-transparent border-white rounded-full border text-white hover:opacity-70 transition-opacity w-10 h-10 flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                    </svg>
-                </button>
+                <div class="flex items-center gap-2">
+                    <button id="lang-btn"
+                        class="cursor-pointer bg-transparent border-white rounded-full border text-white hover:opacity-70 transition-opacity w-10 h-10 flex items-center justify-center font-bold text-sm">
+                        <span>EN</span>
+                    </button>
+
+                    <button id="mute-btn"
+                        class="cursor-pointer bg-transparent border-white rounded-full border text-white hover:opacity-70 transition-opacity w-10 h-10 flex items-center justify-center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             <div class="flex flex-col justify-start">
                 <div class="space-y-4">
-                    <h1 class="text-4xl hoshiko2 text-white">
+                    <h1 id="site-title" class="text-4xl hoshiko2 text-white">
                         La Tour de l'Encens Bouddhiste
                     </h1>
 
                     <div class="p-6 bg-white/80 border border-black/10 backdrop-blur-sm">
-                        <p class="text-black leading-6 text-md indent-8">
-                            Érigée entre 1750 et 1764 sous le règne de l’empereur Qianlong, cette tour monumentale fut
-                            conçue comme le point le plus haut du Palais d’Été. La tour fut construite avec pour
-                            ambition
-                            d'avoir 9 étages, mais celle-ci fut transformée en tour bouddhiste lors de sa construction
+                        <p id="main-text" class="text-black leading-6 text-md indent-8">
+                            Érigée entre 1750 et 1764 sous le règne de l'empereur Qianlong, cette tour monumentale fut
+                            conçue comme le point le plus haut du Palais d'Été. La tour fut construite avec pour
+                            ambition d'avoir 9 étages, mais celle-ci fut transformée en tour bouddhiste lors de sa construction
                             et ne compte aujourd'hui que 3 étages.<br><br>
-                        </p>
-                        <p class="text-black leading-6 text-md indent-8">
+
                             La tour s'élève à 41 mètres, repose sur une base massive de 21 mètres en pierre
                             taillée. Sa charpente complexe utilise des bois précieux assemblés grâce à des techniques
                             traditionnelles. Les façades sont ornées de carreaux jaunes aux bords verts et de murs
@@ -65,29 +70,28 @@
                             entouré de huit piliers colossaux en bois de santal qui soutiennent la structure et
                             entourent une statue dorée représentant le Bouddha aux Mille Mains, celle-ci mesure cinq
                             mètres et pèse 5 tonnes.<br><br>
-                        </p>
-                        <p class="text-black leading-6 text-md indent-8">
+
                             Les pèlerins bouddhistes viennent prier et faire des offrandes en
                             ce lieu. La tour illustre comment le pouvoir impérial et la dévotion religieuse
                             s'entrelaçaient dans la culture chinoise. <br><br>En décembre 1998, l'UNESCO inclut le
                             Palais
-                            d’Été
+                            d'Été
                             dans sa liste du patrimoine mondial. La tour reste l'un des endroits de Pékin, offrant aux
-                            visiteurs une des meilleures vues sur la ville et l'ensemble du Palais d’Été.
+                            visiteurs une des meilleures vues sur la ville et l'ensemble du Palais d'Été.
                         </p>
-                        <p class="mt-5 text-sm text-black text-right">Par Maxime Derènes</p>
+                        <p class="mt-5 text-sm text-black text-right"><span id="by-text">Par</span> Maxime Derènes</p>
                     </div>
 
                         <ul
                             class="flex flex-col justify-center items-center p-4 bg-white/80 border border-black/10 text-black font-medium uppercase tracking-widest gap-2 mb-4 list-none text-center">
-                            <h1 class="text-xl underline underline-offset-4 mb-2">Vue 3D</h1>
-                            <li>Utilisez le clic gauche pour pivoter</li>
-                            <li>Utilisez le clic droit pour se déplacer</li>
-                            <li>Utilisez la molette pour zoomer</li>
+                            <h1 id="view3d-title" class="text-xl underline underline-offset-4 mb-2">Vue 3D</h1>
+                            <li id="instr-rotate">Utilisez le clic gauche pour pivoter</li>
+                            <li id="instr-move">Utilisez le clic droit pour se déplacer</li>
+                            <li id="instr-zoom">Utilisez la molette pour zoomer</li>
                             <li class="mt-2">
                                 <a href="https://mloks77.github.io/SAE402/" target="_blank"
                                     class="text-[10px] text-blue-500 hover:text-blue-600 flex items-center gap-1.5 justify-center">
-                                    <span>Github du projet</span>
+                                    <span id="github-text">Github du projet</span>
                                 </a>
                             </li>
                         </ul>
@@ -99,7 +103,7 @@
         <main class="flex-1 relative overflow-hidden bg-white">
 
             <button id="toggle-hotspots"
-                class="absolute top-4 right-4 z-50 flex justify-center items-center gap-3 p-4 bg-white/80 border border-black/10 rounded-xl text-black font-medium uppercase tracking-widest hover:bg-white transition-all cursor-pointer shadow-sm group">
+                class="absolute top-4 right-4 z-50 w-[270px] flex justify-center items-center gap-3 p-4 bg-white/80 border border-black/10 rounded-xl text-black font-medium uppercase tracking-widest hover:bg-white transition-all cursor-pointer shadow-sm group">
                 <span id="eye-icon-container">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -118,13 +122,13 @@
 
                 <button class="Hotspot-tour" slot="hotspot-1" data-surface="16 0 266 170 74 0.281 0.418 0.301"
                     data-visibility-attribute="visible">
-                    <div class="HotspotAnnotation">Cet ornement en forme de bouchon protège le sommet de la tour.
-                        Il couronne l’édifice et marque le point le
+                    <div id="hotspot-1-text" class="HotspotAnnotation">Cet ornement en forme de bouchon protège le sommet de la tour.
+                        Il couronne l'édifice et marque le point le
                         plus élevé du Palais d'été.</div>
                 </button>
                 <button class="Hotspot-tour" slot="hotspot-2" data-surface="2 0 119 655 684 0.046 0.919 0.035"
                     data-visibility-attribute="visible">
-                    <div class="HotspotAnnotation">L'accès à la tour est réglementé et nécessite un billet.
+                    <div id="hotspot-2-text" class="HotspotAnnotation">L'accès à la tour est réglementé et nécessite un billet.
                     </div>
                 </button>
                 <div class="progress-bar hide" slot="progress-bar">
@@ -133,7 +137,7 @@
             </model-viewer>
             <div
                 class="absolute bottom-4 right-4 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full text-[10px] text-[#1a1a1a] font-bold tracking-widest uppercase border border-white/30 shadow-lg pointer-events-none z-50 transition-opacity duration-1000">
-                Modélisé par Maxime Derènes</div>
+                <span id="modeled-by">Modélisé par</span> Maxime Derènes</div>
         </main>
 
 
